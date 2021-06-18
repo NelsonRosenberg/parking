@@ -76,7 +76,9 @@ And we get a request asking for prices for next Wednesday at 2pm-6pm on UTC-4.
 
 If we simply search for any rates that are available for a Wednesday, then the above rate would be returned. However, even if the available rate is for a Wednesday, it is for another timezone. Therefore we must first change the timezone of the requested date to match the timezone of the rate, which would become: `Wednesday 2pm UTC-4 -> Thursday 3am UTC+9`, making the Wednesday rate invalid for the requested date. It can even be that when changing the timezone of a request, the start date is in one day, but the end is on the next, which automatically means the price is unavailable.
 
-Because of this complex calculation, I have decided to keep the rates in a redis cache, since every request for prices would basically need to grab everything from the DB. This will improve the performance by eliminating a trip to the DB. Every 30 minutes, a Spring Quartz scheduled task will run to reset the cache using data from the DB, which should prevent any possible caching inconsistencies. Quartz was used in this case to make sure the cache reset is only run once per cluster for every cron trigger, considering that this system will probably run in a multi-server environment.
+Because of this complex calculation, I have decided to keep the rates in a redis cache, since every request for prices would basically need to grab everything from the DB. This will improve the performance by eliminating a trip to the DB. 
+
+Every 30 minutes, a Spring Quartz scheduled task will run to reset the cache using data from the DB, which should prevent any possible caching inconsistencies. Quartz was used in this case to make sure the cache reset is only run once per cluster for every cron trigger, considering that this system will probably run in a multi-server environment.
 
 Overall, the system should be able to handle multiple requests at once, but if the performance is insuficient it can be easily packaged into a docker and run on a cloud server like AWS EC2 or Fargate.
 
