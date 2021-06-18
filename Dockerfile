@@ -8,7 +8,7 @@ WORKDIR /opt/app
 COPY parking.jar /opt/app/parking.jar
 
 # Ports
-EXPOSE 8080
+EXPOSE 5000
 
 # Run server
 RUN ls -la
