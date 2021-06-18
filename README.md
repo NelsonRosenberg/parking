@@ -26,7 +26,7 @@ Likewise, the system includes the following metrics endpoints: `localhost:5000/h
 
 The last one gives a list of acessible performance metrics. Each can be accessed by calling an endpoit with the same name, like so: `localhost:5000/metrics/http.server.requests`.
 
-The docs folder also includes a postman collection that has a simple example for each of the available endpoints, to make testing easier.
+The docs folder also includes a postman collection with a simple example for each of the available endpoints, to make testing easier.
 
 
 ## Database And Cache ##
