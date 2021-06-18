@@ -1,0 +1,32 @@
+# Ignore Eclipse project files
+.classpath
+.project
+.settings/
+
+# Ignore IDEA project files
+.idea/
+*.iml
+
+# Ignore vscode project files
+.vscode/
+
+# Ignore gradle metadata
+.gradle/
+
+# Ignore output directories
+.springBeans
+build/
+target/
+out/
+test-output/
+classes/
+
+# Ignore POM file backups created by Maven versions plugin
+pom.xml.versionsBackup
+/bin/
+
+# Ignoring properties files
+/.nb-gradle/
+
+#Ignoring .DS_Store
+.DS_Store
