@@ -1,0 +1,7 @@
+// Build docker image
+def (versionNumber, snapshot) = project.version.tokenize('-')
+docker {
+    dependsOn build
+    name "${bootJar.archiveBaseName.get()}:${versionNumber}"
+    files (bootJar.archiveFile)
+}

@@ -1,0 +1,65 @@
+plugins {
+    id "java"
+    id "maven-publish"
+    id "application"
+
+    // Spring Plugins
+    id "org.springframework.boot" version "2.3.11.RELEASE"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+
+    // Docker Plugin
+    id "com.palantir.docker" version "0.25.0"
+
+    // Lombok Plugin
+    id "io.freefair.lombok" version "6.0.0-m2"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    // Flyway Dependencies
+    implementation group: "org.flywaydb", name: "flyway-core" ,version: "6.5.7"
+
+    // Spring Dependencies
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-web"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-data-jpa"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-jdbc"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-actuator"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-validation"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-quartz"
+    implementation group: "org.springframework.boot", name: "spring-boot-starter-data-redis"
+
+    // Quartz Scheduler Dependencies
+    implementation group: "org.quartz-scheduler", name: "quartz", version: "2.3.1"
+
+    // Database Dependencies
+    implementation group: "com.h2database", name: "h2", version: "1.4.200"
+    implementation group: "org.glassfish", name: "javax.el", version: "3.0.0"
+
+    // Swagger Dependencies
+    implementation group: "org.springdoc", name: "springdoc-openapi-ui", version: "1.4.6"
+
+    // Embedded Redis Dependencies
+    implementation group: "it.ozimov", name: "embedded-redis", version: "0.7.1"
+
+    // Test Dependencies
+    testImplementation group: "org.springframework.boot", name: "spring-boot-starter-test"
+
+}
+
+applicationName = "parking"
+description = "Parking Prices"
+group = "com.spothero.parking"
+mainClassName = "com.spothero.parking.Application"
+version = "1.0.0"
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+compileJava.options.encoding = "UTF-8"
+
+apply from: "build-config.gradle"
+apply from: "build-docker.gradle"

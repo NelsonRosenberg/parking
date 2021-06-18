@@ -1,0 +1,29 @@
+// Process properties (replacing variables with values)
+compileJava.dependsOn(processResources)
+processResources {
+    with copySpec {
+        from 'src/main/resources'
+        include '**/application*.properties'
+        project.properties.findAll().each {
+            prop ->
+            if (prop.value != null) {
+                filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [ (prop.key): String.valueOf(prop.value)])
+                filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [ ('project.' + prop.key): String.valueOf(prop.value)])
+            }
+        }
+    }
+}
+
+// Set final jar name
+bootJar{
+    archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
+}
+
+// Display unchecked/deprecated warnings
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+}

@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "94e4d725-8cbc-4995-959b-7c0db4ca4d35",
+		"name": "Parking Prices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update rates",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"rates\": [{\r\n\t\t\t\"days\": \"mon,tues,thurs\",\r\n\t\t\t\"times\": \"0900-2100\",\r\n\t\t\t\"tz\": \"America/Chicago\",\r\n\t\t\t\"price\": 1500\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"days\": \"fri,sat,sun\",\r\n\t\t\t\"times\": \"0900-2100\",\r\n\t\t\t\"tz\": \"America/Chicago\",\r\n\t\t\t\"price\": 2000\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"days\": \"wed\",\r\n\t\t\t\"times\": \"0600-1800\",\r\n\t\t\t\"tz\": \"America/Chicago\",\r\n\t\t\t\"price\": 1750\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"days\": \"mon,wed,sat\",\r\n\t\t\t\"times\": \"0100-0500\",\r\n\t\t\t\"tz\": \"America/Chicago\",\r\n\t\t\t\"price\": 1000\r\n\t\t}\r\n\t]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/rates",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve rates",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/rates",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rates"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/prices?start=2015-07-04T15:00:00+00:00&end=2015-07-04T20:00:00+00:00",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"prices"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2015-07-04T15:00:00+00:00"
+						},
+						{
+							"key": "end",
+							"value": "2015-07-04T20:00:00+00:00"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
